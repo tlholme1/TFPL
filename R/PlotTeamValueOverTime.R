@@ -4,7 +4,7 @@
 #' @param LastGW An integer representing the last game week to fetch and visualize.
 #'
 #' @return A ggplot object visualizing team value trends with team-specific colors.
-PlotTeamValueOverTimeRefactored <- function(LeagueCode, LastGW) {
+PlotTeamValueOverTime <- function(LeagueCode, LastGW) {
   # Fetch team value data
   data <- FetchTeamValues(LeagueCode, LastGW)
   
