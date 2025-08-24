@@ -13,7 +13,7 @@ FPLGetTransfers <- function(LeagueCode, GW){
   })
 
   Transfers <- rbindlist(TransfersList)
-  LeagueInfo <- FPLGetLeagueInfo()
+  LeagueInfo <- FPLGetLeagueInfo(LeagueCode)
   PlayerInfo <- FPLGetPlayerInfo()
   Transfers[LeagueInfo, on = "entry",Name := i.player_name]
   Transfers[PlayerInfo, on = list(element_in = id), PlayerIn := i.web_name]
