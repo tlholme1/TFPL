@@ -19,8 +19,9 @@ FetchTeamValues <- function(LeagueCode, LastGW) {
     if (is.null(res)) stop(sprintf("FPLGetTeamValue returned NULL for GW %s", gw))
     return(res)
   })
-  
+
   # Combine fetched results into a single data.table; each record tagged with its gameweek
   combined <- rbindlist(l = fetched, idcol = "GW")
+
   return(combined)
 }
