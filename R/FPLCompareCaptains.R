@@ -16,11 +16,11 @@ FPLCompareCaptains <- function(LeagueCode, GW) {
   }
 
   # captains this GW
-  this_week <- FPLGetMostCaptainedPlayers(LeagueCode, GW)
+  this_week <- FPLGetCaptains(LeagueCode, GW)
   this_week[, GW := GW]
 
   # captains last GW
-  last_week <- FPLGetMostCaptainedPlayers(LeagueCode, GW - 1)
+  last_week <- FPLGetCaptains(LeagueCode, GW - 1)
   last_week[, GW := GW - 1]
 
   # join on team identifier
