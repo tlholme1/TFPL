@@ -19,7 +19,7 @@ FPLGetTransfers <- function(LeagueCode, GW){
   Transfers[PlayerInfo, on = list(element_in = id), PlayerIn := i.web_name]
   Transfers[PlayerInfo, on = list(element_out = id), PlayerOut := i.web_name]
 
-  Output <- Transfers[event == GW]
+  Output <- Transfers[event == GW, list(Name, PlayerOut, CostOut = element_out_cost/10, PlayerIn, CostIn = element_in_cost/10)]
 
   return(Output)
 }
