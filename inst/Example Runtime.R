@@ -14,7 +14,7 @@ SelectedPlayers <- FPLGetMostSelectedPlayers(721349,CurrentGameWeek-1)
 
 OldSelectedPlayers <- FPLGetMostSelectedPlayers(721349,CurrentGameWeek)#
 
-FPLGetUserTeam(UserID = 7572777,GW = 2)
+FPLGetUserTeam(PlayerId = 7572777, GW = 2)
 
 FPLGetSelectedPlayersForALeague(721349,CurrentGameWeek)
 LeagueCode <- 721349
@@ -37,7 +37,7 @@ PlotTeamPointsOverTime(LeagueCode = 721349,
 
 
 SquadsInclBench <- FPLGetSelectedPlayersForALeague(721349,1)
-PlayerPoints <- FPLGetPointsForWeek(1)
+PlayerPoints <- FPLGetGameweekPoints(1)
 
 SquadsInclBench[PlayerPoints,on = "Name", Points := i.Points]
 

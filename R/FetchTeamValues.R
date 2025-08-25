@@ -13,10 +13,10 @@ FetchTeamValues <- function(LeagueCode, LastGW) {
     res <- tryCatch(
       FPLGetTeamValue(LeagueCode = LeagueCode, GW = gw),
       error = function(e) {
-        stop(sprintf("Error fetching data for GW %s: %s", gw, e$message))
+        stop(paste0("Error fetching data for GW ", gw, ": ", e$message))
       }
     )
-    if (is.null(res)) stop(sprintf("FPLGetTeamValue returned NULL for GW %s", gw))
+    if (is.null(res)) stop(paste0("FPLGetTeamValue returned NULL for GW ", gw))
     return(res)
   })
 

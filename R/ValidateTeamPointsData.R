@@ -7,7 +7,7 @@
 #' @return `TRUE` if data is valid, otherwise an error is thrown.
 #' @examples
 #' \dontrun{
-#'   ValidateTeamPointsData(data.table::data.table(x = 1:3))
+#'   ValidateTeamPointsData(data.table(x = 1:3))
 #' }
 ValidateTeamPointsData <- function(data) {
   if (is.null(data)) {

@@ -1,9 +1,8 @@
+#' Retrieve static player information
+#'
+#' @return A data.table with player metadata.
 FPLGetPlayerInfo <- function(){
-  StaticInfoResponse <- GET(url = "https://fantasy.premierleague.com/api/bootstrap-static/")
-
-  StaticInfoList <- content(StaticInfoResponse)
-
-  StaticInfoTable <- data.table::rbindlist(StaticInfoList$elements)
-
+  StaticInfo <- FPLAPIGetHeaderData()
+  StaticInfoTable <- rbindlist(StaticInfo$elements)
   return(StaticInfoTable)
 }
