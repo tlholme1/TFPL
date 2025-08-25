@@ -7,10 +7,11 @@
 #' @return A ggplot object representing the team value trend.
 BuildTeamValuePlot <- function(data) {
 
-  p <- ggplot(data, aes(x = GW, y = team_value)) +
-    geom_line(color = 'blue') +
+  p <- ggplot(data, aes(x = GW, y = TeamValue/10, group = rn,color = rn)) +
+    geom_line() +
     labs(title = 'Team Value Over Time', x = 'Game Week', y = 'Team Value') +
     theme_minimal()
 
   return(p)
+}
 
