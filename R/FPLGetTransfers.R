@@ -6,6 +6,7 @@ FPLGetTransfers <- function(LeagueCode, GW){
 
   TransfersList  <- lapply(X = EntriesToLoop,FUN = function(x){
     x <- GET(url = paste0("https://fantasy.premierleague.com/api/entry/",x,"/transfers"))
+    stop_for_status(x)
 
     y <- content(x)
     Output <- rbindlist(y)
