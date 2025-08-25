@@ -5,7 +5,7 @@
 #'
 #' @return A data.table with similarity scores to the world modal XI.
 FPLFindClosestToWorldModal <- function(LeagueCode, GW){
-  ModalWorld <- FPLGetModalXIWorld()$PlayerId
+  ModalWorld <- FPLGetModalXIWorld(GW)$PlayerId
   LeagueInfo <- FPLGetLeagueInfo(LeagueCode)
   setnames(LeagueInfo, "player_name", "PlayerName")
   PlayerIds <- LeagueInfo$PlayerId
