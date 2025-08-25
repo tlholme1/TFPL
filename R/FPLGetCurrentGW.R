@@ -1,6 +1,6 @@
 FPLGetCurrentGW <- function() {
 
-  resp <- httr::GET("https://fantasy.premierleague.com/api/bootstrap-static/")
+  resp <- GET("https://fantasy.premierleague.com/api/bootstrap-static/")
   stop_for_status(resp)
 
   dat <- jsonlite::fromJSON(content(resp, "text", encoding = "UTF-8"), flatten = TRUE)

@@ -1,5 +1,6 @@
 FPLGetPointsForWeek <- function(GW){
   x <- GET(paste0("https://fantasy.premierleague.com/api/event/",GW,"/live/"))
+  stop_for_status(x)
 
   y <- content(x)
   ListOfData <- lapply(X = y$elements, function(x){data.table(id = x$id,Points = x$stats$total_points)})
