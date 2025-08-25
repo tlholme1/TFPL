@@ -2,8 +2,8 @@
 #'
 #' Downloads captain choices for the current and previous gameweek, and compares them.
 #'
-#' @param LeagueCode Integer, the FPL league code.
-#' @param GW Integer, the current gameweek (must be > 1).
+#' @param LeagueCode Integer, the FPL league code. Must be a single integer.
+#' @param GW Integer, the current gameweek (must be > 1). Must be a single integer.
 #'
 #' @return A data.table showing each team's captain choice this week vs last week.
 #' @examples
@@ -11,6 +11,8 @@
 #'   CompareCaptains(721349, GW = 3)
 #' }
 FPLCompareCaptains <- function(LeagueCode, GW) {
+  .assert_single_integer(LeagueCode, "LeagueCode")
+  .assert_single_integer(GW, "GW")
   if (GW <= 1) {
     stop("Gameweek must be greater than 1 to compare.")
   }

@@ -1,7 +1,4 @@
 library(THFPL)
-library(httr)
-library(ggplot2)
-library(data.table)
 
 LeagueInfo <- FPLGetLeagueInfo(721349)
 
@@ -9,19 +6,11 @@ CurrentGameWeek <- FPLGetCurrentGW()$current
 
 FPLCompareCaptains(LeagueCode = 721349, GW = CurrentGameWeek)
 
-SelectedPlayers <- FPLGetMostSelectedPlayers(721349,CurrentGameWeek-1)
-
-OldSelectedPlayers <- FPLGetMostSelectedPlayers(721349,CurrentGameWeek)#
+SelectedPlayers <- FPLGetMostSelectedPlayers(721349, CurrentGameWeek - 1)
 
 FPLGetUserTeam(PlayerId = 7572777, GW = 2)
 
-FPLGetSelectedPlayersForALeague(721349,CurrentGameWeek)
-LeagueCode <- 721349
-GW <- 7
-LeagueInfo <- FPLGetLeagueInfo(LeagueCode)
-
-
-FPLGetTransfers(721349,2)
+FPLGetTransfers(721349, 2)
 
 PlotTeamValueOverTime(LeagueCode = 721349,
                       LastGW = 2)
@@ -32,8 +21,6 @@ PlotTeamPointsOverTime(LeagueCode = 721349,
 PlotTeamPointsOverTime(LeagueCode = 721349,
                        LastGW = 2,
                        Average = TRUE)
-
-
 
 SquadsInclBench <- FPLGetSelectedPlayersForALeague(721349,1)
 setnames(SquadsInclBench, "player_name", "PlayerName")
@@ -51,3 +38,4 @@ FPLCompareTeams(1:11, 2:12)
 FPLFindMostSimilarTeams(721349, 1)
 FPLFindClosestToWorldModal(721349, 1)
 FPLFindClosestToLeagueModal(721349, 1)
+
