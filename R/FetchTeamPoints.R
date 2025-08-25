@@ -6,7 +6,7 @@
 #' @param LeagueCode A string representing the league code.
 #' @param LastGW An integer representing the last gameweek to fetch.
 #'
-#' @return A data.table with team value data tagged by gameweek.
+#' @return A data.table with team points data tagged by gameweek.
 FetchTeamPoints <- function(LeagueCode, LastGW) {
   gws <- seq_len(as.integer(LastGW))
   fetched <- lapply(gws, function(gw) {
