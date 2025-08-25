@@ -1,10 +1,12 @@
 #' Integrates data fetching, validation, plotting, and color selection into a single function to produce a refined plot of team values over time.
 #'
-#' @param LeagueCode A string representing the league code.
-#' @param LastGW An integer representing the last game week to fetch and visualize.
+#' @param LeagueCode A string representing the league code. Must be a single integer.
+#' @param LastGW An integer representing the last game week to fetch and visualize. Must be a single integer.
 #'
 #' @return A ggplot object visualizing team value trends with team-specific colors.
 PlotTeamValueOverTime <- function(LeagueCode, LastGW) {
+  .assert_single_integer(LeagueCode, "LeagueCode")
+  .assert_single_integer(LastGW, "LastGW")
   # Fetch team value data
   data <- FetchTeamValues(LeagueCode, LastGW)
 
