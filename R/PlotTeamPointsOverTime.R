@@ -3,14 +3,14 @@
 #' @param LeagueCode A string representing the league code.
 #' @param LastGW An integer representing the last game week to fetch and visualize.
 #'
-#' @return A ggplot object visualizing team value trends with team-specific colors.
+#' @return A ggplot object visualizing team points trends with team-specific colors.
 PlotTeamPointsOverTime <- function(LeagueCode, LastGW, Average = FALSE) {
   # Fetch team value data
   data <- FetchTeamPoints(LeagueCode, LastGW)
 
   # Validate data
-  valid <- ValidateTeamValueData(data)
-  if (!valid) stop('Invalid team value data')
+  valid <- ValidateTeamPointsData(data)
+  if (!valid) stop('Invalid team points data')
 
   # Build plot
   plot <- BuildTeamPointsPlot(data, Average = Average)
