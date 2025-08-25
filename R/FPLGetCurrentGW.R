@@ -1,16 +1,16 @@
+#' Retrieve current, next, and last finished gameweeks
+#'
+#' Queries the FPL API for global gameweek information.
+#'
+#' @return A list with elements `current`, `next`, and `finished` containing
+#'   the respective gameweek numbers.
 FPLGetCurrentGW <- function() {
-
-  resp <- GET("https://fantasy.premierleague.com/api/bootstrap-static/")
-  stop_for_status(resp)
-
-  dat <- jsonlite::fromJSON(content(resp, "text", encoding = "UTF-8"), flatten = TRUE)
-  events <- data.table::as.data.table(dat$events)
-
+  data <- FPLAPIGetHeaderData()
+  GW <- as.data.table(data$events)
   Output <- list(
-    current = events[is_current == TRUE, id],
-    `next` = events[is_next == TRUE, id],
-    finished = events[finished == TRUE, max(id, na.rm = TRUE)]
+    current = GW[is_current == TRUE, id],
+    `next` = GW[is_next == TRUE, id],
+    finished = GW[finished == TRUE, max(id, na.rm = TRUE)]
   )
-
   return(Output)
 }
