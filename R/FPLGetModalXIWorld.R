@@ -17,19 +17,6 @@ FPLGetModalXIWorld <- function(GW = FPLGetCurrentGW()$current){
       Team = team,
       ElementType = element_type,
       SelectedByPercent = as.numeric(selected_by_percent))]
-  setorder(Info, -SelectedByPercent)
 
-  GK  <- Info[ElementType == 1][1]
-  DEF <- Info[ElementType == 2][1:3]
-  MID <- Info[ElementType == 3][1]
-  FWD <- Info[ElementType == 4][1]
-  Picked <- rbindlist(list(GK, DEF, MID, FWD))
-
-  Remaining <- Info[!PlayerId %in% Picked$PlayerId]
-  SpotsLeft <- 11 - nrow(Picked)
-  if (SpotsLeft > 0) {
-    Picked <- rbind(Picked, Remaining[1:SpotsLeft])
-  }
-
-  return(Picked)
+  .BuildModalXI(Info, SelectedByPercent)
 }
